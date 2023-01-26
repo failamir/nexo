@@ -32,9 +32,6 @@
                             {{ trans('cruds.teamCompetition.fields.competition') }}
                         </th>
                         <th>
-                            {{ trans('cruds.teamCompetition.fields.pembayaran') }}
-                        </th>
-                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -57,9 +54,6 @@
                                 @foreach($teamCompetition->competitions as $key => $item)
                                     <span class="badge badge-info">{{ $item->nama_lomba }}</span>
                                 @endforeach
-                            </td>
-                            <td>
-                                {{ $teamCompetition->pembayaran->status_pembayaran ?? '' }}
                             </td>
                             <td>
                                 @can('team_competition_show')

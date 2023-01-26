@@ -21,7 +21,6 @@ class TeamCompetition extends Model
     ];
 
     protected $fillable = [
-        'pembayaran_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -35,11 +34,6 @@ class TeamCompetition extends Model
     public function competitions()
     {
         return $this->belongsToMany(Competition::class);
-    }
-
-    public function pembayaran()
-    {
-        return $this->belongsTo(Pembayaran::class, 'pembayaran_id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

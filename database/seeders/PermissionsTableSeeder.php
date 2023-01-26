@@ -96,66 +96,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 22,
-                'title' => 'pembayaran_create',
-            ],
-            [
-                'id'    => 23,
-                'title' => 'pembayaran_edit',
-            ],
-            [
-                'id'    => 24,
-                'title' => 'pembayaran_show',
-            ],
-            [
-                'id'    => 25,
-                'title' => 'pembayaran_delete',
-            ],
-            [
-                'id'    => 26,
-                'title' => 'pembayaran_access',
-            ],
-            [
-                'id'    => 27,
                 'title' => 'team_competition_create',
             ],
             [
-                'id'    => 28,
+                'id'    => 23,
                 'title' => 'team_competition_edit',
             ],
             [
-                'id'    => 29,
+                'id'    => 24,
                 'title' => 'team_competition_show',
             ],
             [
-                'id'    => 30,
+                'id'    => 25,
                 'title' => 'team_competition_delete',
             ],
             [
-                'id'    => 31,
+                'id'    => 26,
                 'title' => 'team_competition_access',
             ],
             [
-                'id'    => 32,
+                'id'    => 27,
                 'title' => 'tim_lomba_create',
             ],
             [
-                'id'    => 33,
+                'id'    => 28,
                 'title' => 'tim_lomba_edit',
             ],
             [
-                'id'    => 34,
+                'id'    => 29,
                 'title' => 'tim_lomba_show',
             ],
             [
-                'id'    => 35,
+                'id'    => 30,
                 'title' => 'tim_lomba_delete',
             ],
             [
-                'id'    => 36,
+                'id'    => 31,
                 'title' => 'tim_lomba_access',
             ],
             [
-                'id'    => 37,
+                'id'    => 32,
                 'title' => 'profile_password_edit',
             ],
         ];

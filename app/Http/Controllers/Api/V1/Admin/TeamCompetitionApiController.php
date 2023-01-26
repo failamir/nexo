@@ -17,7 +17,7 @@ class TeamCompetitionApiController extends Controller
     {
         abort_if(Gate::denies('team_competition_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TeamCompetitionResource(TeamCompetition::with(['tims', 'competitions', 'pembayaran'])->get());
+        return new TeamCompetitionResource(TeamCompetition::with(['tims', 'competitions'])->get());
     }
 
     public function store(StoreTeamCompetitionRequest $request)
@@ -35,7 +35,7 @@ class TeamCompetitionApiController extends Controller
     {
         abort_if(Gate::denies('team_competition_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new TeamCompetitionResource($teamCompetition->load(['tims', 'competitions', 'pembayaran']));
+        return new TeamCompetitionResource($teamCompetition->load(['tims', 'competitions']));
     }
 
     public function update(UpdateTeamCompetitionRequest $request, TeamCompetition $teamCompetition)

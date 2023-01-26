@@ -34,12 +34,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('competitions/ckmedia', 'CompetitionController@storeCKEditorImages')->name('competitions.storeCKEditorImages');
     Route::resource('competitions', 'CompetitionController');
 
-    // Pembayaran
-    Route::delete('pembayarans/destroy', 'PembayaranController@massDestroy')->name('pembayarans.massDestroy');
-    Route::post('pembayarans/media', 'PembayaranController@storeMedia')->name('pembayarans.storeMedia');
-    Route::post('pembayarans/ckmedia', 'PembayaranController@storeCKEditorImages')->name('pembayarans.storeCKEditorImages');
-    Route::resource('pembayarans', 'PembayaranController');
-
     // Team Competition
     Route::delete('team-competitions/destroy', 'TeamCompetitionController@massDestroy')->name('team-competitions.massDestroy');
     Route::resource('team-competitions', 'TeamCompetitionController');

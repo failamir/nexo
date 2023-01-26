@@ -7,7 +7,6 @@ use App\Http\Requests\MassDestroyTeamCompetitionRequest;
 use App\Http\Requests\StoreTeamCompetitionRequest;
 use App\Http\Requests\UpdateTeamCompetitionRequest;
 use App\Models\Competition;
-use App\Models\Pembayaran;
 use App\Models\TeamCompetition;
 use App\Models\TimLomba;
 use Gate;
@@ -20,7 +19,7 @@ class TeamCompetitionController extends Controller
     {
         abort_if(Gate::denies('team_competition_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $teamCompetitions = TeamCompetition::with(['tims', 'competitions', 'pembayaran'])->get();
+        $teamCompetitions = TeamCompetition::with(['tims', 'competitions'])->get();
 
         return view('admin.teamCompetitions.index', compact('teamCompetitions'));
     }
@@ -33,9 +32,7 @@ class TeamCompetitionController extends Controller
 
         $competitions = Competition::pluck('nama_lomba', 'id');
 
-        $pembayarans = Pembayaran::pluck('status_pembayaran', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.teamCompetitions.create', compact('competitions', 'pembayarans', 'tims'));
+        return view('admin.teamCompetitions.create', compact('competitions', 'tims'));
     }
 
     public function store(StoreTeamCompetitionRequest $request)
@@ -55,11 +52,9 @@ class TeamCompetitionController extends Controller
 
         $competitions = Competition::pluck('nama_lomba', 'id');
 
-        $pembayarans = Pembayaran::pluck('status_pembayaran', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $teamCompetition->load('tims', 'competitions');
 
-        $teamCompetition->load('tims', 'competitions', 'pembayaran');
-
-        return view('admin.teamCompetitions.edit', compact('competitions', 'pembayarans', 'teamCompetition', 'tims'));
+        return view('admin.teamCompetitions.edit', compact('competitions', 'teamCompetition', 'tims'));
     }
 
     public function update(UpdateTeamCompetitionRequest $request, TeamCompetition $teamCompetition)
@@ -75,7 +70,7 @@ class TeamCompetitionController extends Controller
     {
         abort_if(Gate::denies('team_competition_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $teamCompetition->load('tims', 'competitions', 'pembayaran');
+        $teamCompetition->load('tims', 'competitions');
 
         return view('admin.teamCompetitions.show', compact('teamCompetition'));
     }

@@ -104,6 +104,9 @@
                             {{ trans('cruds.timLomba.fields.simpan_permanen') }}
                         </th>
                         <th>
+                            {{ trans('cruds.timLomba.fields.bukti_pembayaran') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -242,6 +245,13 @@
                             </td>
                             <td>
                                 {{ $timLomba->simpan_permanen ?? '' }}
+                            </td>
+                            <td>
+                                @if($timLomba->bukti_pembayaran)
+                                    <a href="{{ $timLomba->bukti_pembayaran->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $timLomba->bukti_pembayaran->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 @can('tim_lomba_show')

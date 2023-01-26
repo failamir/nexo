@@ -43,14 +43,6 @@
                             @endforeach
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.teamCompetition.fields.pembayaran') }}
-                        </th>
-                        <td>
-                            {{ $teamCompetition->pembayaran->status_pembayaran ?? '' }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
