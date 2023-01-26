@@ -279,6 +279,18 @@
                             {{ $timLomba->simpan_permanen }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.timLomba.fields.bukti_pembayaran') }}
+                        </th>
+                        <td>
+                            @if($timLomba->bukti_pembayaran)
+                                <a href="{{ $timLomba->bukti_pembayaran->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $timLomba->bukti_pembayaran->getUrl('thumb') }}">
+                                </a>
+                            @endif
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

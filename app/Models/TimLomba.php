@@ -37,6 +37,7 @@ class TimLomba extends Model implements HasMedia
         'foto_anggota_4',
         'e_ktm_anggota_4',
         'bukti_anggota_4',
+        'bukti_pembayaran',
     ];
 
     protected $fillable = [
@@ -205,6 +206,18 @@ class TimLomba extends Model implements HasMedia
     public function getBuktiAnggota4Attribute()
     {
         $file = $this->getMedia('bukti_anggota_4')->last();
+        if ($file) {
+            $file->url       = $file->getUrl();
+            $file->thumbnail = $file->getUrl('thumb');
+            $file->preview   = $file->getUrl('preview');
+        }
+
+        return $file;
+    }
+
+    public function getBuktiPembayaranAttribute()
+    {
+        $file = $this->getMedia('bukti_pembayaran')->last();
         if ($file) {
             $file->url       = $file->getUrl();
             $file->thumbnail = $file->getUrl('thumb');

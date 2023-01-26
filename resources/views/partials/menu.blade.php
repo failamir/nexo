@@ -67,16 +67,6 @@
                 </a>
             </li>
         @endcan
-        @can('pembayaran_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.pembayarans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pembayarans") || request()->is("admin/pembayarans/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-credit-card c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.pembayaran.title') }}
-                </a>
-            </li>
-        @endcan
         @can('team_competition_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.team-competitions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/team-competitions") || request()->is("admin/team-competitions/*") ? "c-active" : "" }}">

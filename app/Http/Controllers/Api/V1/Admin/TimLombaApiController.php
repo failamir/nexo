@@ -75,6 +75,10 @@ class TimLombaApiController extends Controller
             $timLomba->addMedia(storage_path('tmp/uploads/' . basename($request->input('bukti_anggota_4'))))->toMediaCollection('bukti_anggota_4');
         }
 
+        if ($request->input('bukti_pembayaran', false)) {
+            $timLomba->addMedia(storage_path('tmp/uploads/' . basename($request->input('bukti_pembayaran'))))->toMediaCollection('bukti_pembayaran');
+        }
+
         return (new TimLombaResource($timLomba))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
@@ -221,6 +225,17 @@ class TimLombaApiController extends Controller
             }
         } elseif ($timLomba->bukti_anggota_4) {
             $timLomba->bukti_anggota_4->delete();
+        }
+
+        if ($request->input('bukti_pembayaran', false)) {
+            if (!$timLomba->bukti_pembayaran || $request->input('bukti_pembayaran') !== $timLomba->bukti_pembayaran->file_name) {
+                if ($timLomba->bukti_pembayaran) {
+                    $timLomba->bukti_pembayaran->delete();
+                }
+                $timLomba->addMedia(storage_path('tmp/uploads/' . basename($request->input('bukti_pembayaran'))))->toMediaCollection('bukti_pembayaran');
+            }
+        } elseif ($timLomba->bukti_pembayaran) {
+            $timLomba->bukti_pembayaran->delete();
         }
 
         return (new TimLombaResource($timLomba))

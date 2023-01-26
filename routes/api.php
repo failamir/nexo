@@ -9,10 +9,6 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::post('competitions/media', 'CompetitionApiController@storeMedia')->name('competitions.storeMedia');
     Route::apiResource('competitions', 'CompetitionApiController');
 
-    // Pembayaran
-    Route::post('pembayarans/media', 'PembayaranApiController@storeMedia')->name('pembayarans.storeMedia');
-    Route::apiResource('pembayarans', 'PembayaranApiController');
-
     // Team Competition
     Route::apiResource('team-competitions', 'TeamCompetitionApiController');
 
